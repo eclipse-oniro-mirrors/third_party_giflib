@@ -18,7 +18,11 @@ if (defined(ohos_lite)) {  # is on lite Os for ipcamera
   ]
 
   lite_library("libgif") {
-    target_type = "shared_library"
+    if (ohos_kernel_type == "liteos_m") {
+      target_type = "static_library"
+    } else {
+      target_type = "shared_library"
+    }
     sources = libgif_source
 
     public_configs = [ ":libgif_config" ]
